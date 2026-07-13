@@ -1,0 +1,32 @@
+# Tomcat and zip files
+/tomcat.zip
+/apache-tomcat-10.1.34/
+
+# Java compilation outputs (if build directory is recreated)
+**/build/
+**/*.class
+/Selavu/src/main/webapp/WEB-INF/classes/
+
+# Eclipse project files
+.metadata/
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+*.iws
+
+# NetBeans project files
+nbproject/
+build/
+dist/
+
+# OS-specific files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Log files
+*.log

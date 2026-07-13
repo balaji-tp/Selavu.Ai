@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selavu.Ai - Sign Up</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Base styles and background */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px 0;
+    }
+
+    /* Animated background shapes */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 20s infinite ease-in-out;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -50%;
+      left: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      animation: float 25s infinite ease-in-out reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(50px, 50px); }
+    }
+
+    /* Back button */
+    .back-btn {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #667eea;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      z-index: 2;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .back-btn:hover {
+      transform: translateX(-5px);
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+      background: rgba(255, 255, 255, 1);
+    }
+
+    /* Glassmorphism container with improved aesthetics */
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 35px 40px;
+      width: 440px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      animation: fadeIn 1s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Logo/Icon at top */
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .container h2 {
+      margin-bottom: 8px;
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: #718096;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+    }
+
+    /* Input group for positioning icons */
+    .input-group {
+      position: relative;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: #4a5568;
+      font-weight: 500;
+      font-size: 0.85rem;
+      margin-left: 5px;
+    }
+
+    .input-group .input-icon {
+      position: absolute;
+      left: 20px;
+      bottom: 16px;
+      color: #a0aec0;
+      transition: color 0.3s;
+      font-size: 1rem;
+      pointer-events: none;
+    }
+    
+    /* Modernized input fields */
+    .input-field {
+      width: 100%;
+      padding: 14px 45px 14px 50px;
+      border: 2px solid #e2e8f0;
+      border-radius: 15px;
+      outline: none;
+      font-size: 0.95rem;
+      background: #f7fafc;
+      color: #2d3748;
+      transition: all 0.3s;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .input-field::placeholder {
+      color: #a0aec0;
+    }
+
+    /* Enhanced focus state for inputs */
+    .input-group:focus-within .input-icon {
+      color: #667eea;
+    }
+
+    .input-field:focus {
+      background: #fff;
+      border-color: #667eea;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+
+    /* Style for input errors */
+    .input-error {
+      border-color: #fc8181 !important;
+      box-shadow: 0 0 0 4px rgba(252, 129, 129, 0.1) !important;
+    }
+
+    /* Password visibility toggle icon */
+    .password-toggle {
+      position: absolute;
+      right: 20px;
+      bottom: 16px;
+      color: #a0aec0;
+      cursor: pointer;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+
+    .password-toggle:hover {
+      color: #667eea;
+    }
+
+    /* Stylish and high-contrast button */
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      transition: left 0.4s ease;
+    }
+
+    .btn:hover::before {
+      left: 0;
+    }
+
+    .btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(-1px);
+    }
+
+    /* Cleaner links section */
+    .extra-links {
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .extra-links a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .extra-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.3s ease;
+    }
+
+    .extra-links a:hover::after {
+      width: 100%;
+    }
+
+    .extra-links a:hover {
+      color: #764ba2;
+    }
+    
+    .extra-links p {
+      margin: 12px 0;
+      color: #718096;
+    }
+
+    /* Error message styling */
+    .error-message {
+      color: #c53030;
+      background: rgba(254, 215, 215, 0.9);
+      padding: 12px 15px;
+      border-radius: 12px;
+      margin-top: 15px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      display: none;
+      animation: fadeIn 0.5s;
+      border: 1px solid #feb2b2;
+      text-align: left;
+    }
+
+    .error-message i {
+      margin-right: 8px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 20px 0 15px;
+      color: #a0aec0;
+      font-size: 0.85rem;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    .divider span {
+      padding: 0 15px;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 25px;
+      }
+
+      .container h2 {
+        font-size: 1.5rem;
+      }
+
+      .back-btn {
+        top: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+
+      .input-field {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Back to Home Button -->
+  <a href="homepage.html" class="back-btn" title="Back to Home">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+
+  <div class="container">
+    <div class="logo-icon">
+      <i class="fas fa-user-plus"></i>
+    </div>
+    <h2>Create Account</h2>
+    <p class="subtitle">Join Selavu.Ai to start tracking your finances</p>
+    
+    <form action="SelavuServlet" method="post" id="signupForm" novalidate>
+      <!-- Username input -->
+      <div class="input-group">
+        <label>Username</label>
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" name="username" class="input-field" placeholder="Choose a username" required>
+      </div>
+
+      <!-- Email input -->
+      <div class="input-group">
+        <label>Email Address</label>
+        <i class="fas fa-envelope input-icon"></i>
+        <input type="email" name="email" class="input-field" placeholder="Enter your email" required>
+      </div>
+
+      <!-- Password input -->
+      <div class="input-group">
+        <label>Password</label>
+        <i class="fas fa-lock input-icon"></i>
+        <input type="password" id="password" name="password" class="input-field" placeholder="Create a password" required>
+        <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+      </div>
+
+      <!-- Confirm Password input -->
+      <div class="input-group">
+        <label>Confirm Password</label>
+        <i class="fas fa-check-circle input-icon"></i>
+        <input type="password" id="confirm_password" name="confirm_password" class="input-field" placeholder="Re-enter your password" required>
+        <i class="fas fa-eye password-toggle" id="toggleConfirmPassword"></i>
+      </div>
+
+      <!-- Error message container -->
+      <div id="passwordError" class="error-message">
+        <i class="fas fa-exclamation-circle"></i> Passwords do not match. Please try again.
+      </div>
+
+      <button type="submit" class="btn" name="b" value="Register">
+        <span>Create Account</span>
+      </button>
+    </form>
+
+    <div class="divider">
+      <span>OR</span>
+    </div>
+
+    <div class="extra-links">
+      <p>Already have an account? <a href="signin.html">Sign In</a></p>
+    </div>
+  </div>
+
+  <!-- <script>
+    // --- Password Visibility Toggle ---
+    function setupPasswordToggle(toggleId, passwordId) {
+        const toggle = document.getElementById(toggleId);
+        const passwordInput = document.getElementById(passwordId);
+
+        if (toggle && passwordInput) {
+            toggle.addEventListener('click', function () {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye-slash');
+            });
+        }
+    }
+
+    setupPasswordToggle('togglePassword', 'password');
+    setupPasswordToggle('toggleConfirmPassword', 'confirm_password');
+
+    // --- Form Submission and Real-time Validation ---
+    const form = document.getElementById('signupForm');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm_password');
+    const errorMessage = document.getElementById('passwordError');
+
+    // Function to check if passwords match
+    function validatePasswords() {
+        if (password.value !== confirmPassword.value && confirmPassword.value.length > 0) {
+            errorMessage.style.display = 'block';
+            password.classList.add('input-error');
+            confirmPassword.classList.add('input-error');
+            return false;
+        } else {
+            errorMessage.style.display = 'none';
+            password.classList.remove('input-error');
+            confirmPassword.classList.remove('input-error');
+            return true;
+        }
+    }
+
+    // Real-time validation on input
+    password.addEventListener('input', validatePasswords);
+    confirmPassword.addEventListener('input', validatePasswords);
+
+    // Final validation on form submission
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            if (!validatePasswords()) {
+                // Prevent form from submitting if passwords don't match
+                event.preventDefault(); 
+            }
+        });
+    }
+  </script> -->
+</body>
+</html>

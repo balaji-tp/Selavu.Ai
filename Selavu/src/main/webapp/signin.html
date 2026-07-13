@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selavu.Ai - Sign In</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Base styles and background */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated background shapes */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 20s infinite ease-in-out;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -50%;
+      left: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      animation: float 25s infinite ease-in-out reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(50px, 50px); }
+    }
+
+    /* Glassmorphism container with improved aesthetics */
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 35px 40px;
+      width: 420px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      animation: fadeIn 1s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Logo/Icon at top */
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .container h2 {
+      margin-bottom: 8px;
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: #718096;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+    }
+
+    /* Input group for positioning icons */
+    .input-group {
+      position: relative;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: #4a5568;
+      font-weight: 500;
+      font-size: 0.85rem;
+      margin-left: 5px;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 20px;
+      bottom: 16px;
+      color: #a0aec0;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+    
+    /* Modernized input fields */
+    .input-field {
+      width: 100%;
+      padding: 14px 20px 14px 50px;
+      border: 2px solid #e2e8f0;
+      border-radius: 15px;
+      outline: none;
+      font-size: 0.95rem;
+      background: #f7fafc;
+      color: #2d3748;
+      transition: all 0.3s;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .input-field::placeholder {
+      color: #a0aec0;
+    }
+
+    /* Enhanced focus state for inputs */
+    .input-group:focus-within i {
+      color: #667eea;
+    }
+
+    .input-field:focus {
+      background: #fff;
+      border-color: #667eea;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+
+    /* Stylish and high-contrast button */
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      transition: left 0.4s ease;
+    }
+
+    .btn:hover::before {
+      left: 0;
+    }
+
+    .btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(-1px);
+    }
+
+    /* Cleaner links section */
+    .extra-links {
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .extra-links a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .extra-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.3s ease;
+    }
+
+    .extra-links a:hover::after {
+      width: 100%;
+    }
+
+    .extra-links a:hover {
+      color: #764ba2;
+    }
+    
+    .extra-links p {
+      margin: 12px 0;
+      color: #718096;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 25px 0;
+      color: #a0aec0;
+      font-size: 0.85rem;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    .divider span {
+      padding: 0 15px;
+    }
+
+    /* Back button */
+    .back-btn {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #667eea;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      z-index: 2;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .back-btn:hover {
+      transform: translateX(-5px);
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+      background: rgba(255, 255, 255, 1);
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      .container {
+        padding: 40px 30px;
+      }
+
+      .container h2 {
+        font-size: 1.75rem;
+      }
+
+      .input-field {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Back to Home Button -->
+  <a href="homepage.html" class="back-btn" title="Back to Home">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+  
+  <div class="container">
+    <div class="logo-icon">
+      <i class="fas fa-wallet"></i>
+    </div>
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Sign in to continue to Selavu.Ai</p>
+    
+    <form action="SelavuServlet" method="post">
+      <!-- Username input with icon -->
+      <div class="input-group">
+        <label>Username</label>
+        <i class="fas fa-user"></i>
+        <input type="text" name="username" class="input-field" placeholder="Enter your username" required>
+      </div>
+      
+      <!-- Password input with icon -->
+      <div class="input-group">
+        <label>Password</label>
+        <i class="fas fa-lock"></i>
+        <input type="password" name="password" class="input-field" placeholder="Enter your password" required>
+      </div>
+      
+      <button type="submit" class="btn" name="b" value="Sign In">
+        <span>Sign In</span>
+      </button>
+    </form>
+    
+    <div class="divider">
+      <span>OR</span>
+    </div>
+    
+    <div class="extra-links">
+      <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+      <p><a href="#">Forgot Password?</a></p>
+    </div>
+  </div>
+</body>
+</html>
