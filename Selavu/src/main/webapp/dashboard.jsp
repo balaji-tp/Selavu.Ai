@@ -471,8 +471,7 @@ body::after {
 
     try {
         // --- Database Connection ---
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "0900");
+        con = Money.DBCon.getCon();
         
         // --- SQL Query to Fetch Expenses ---
         String sql = "SELECT amount, category, pdate FROM selavu_expenses WHERE uname = ? ORDER BY pdate DESC";

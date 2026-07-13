@@ -512,8 +512,7 @@ tbody tr:hover {
             NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
 
             try {
-                Class.forName("oracle.jdbc.driver.OracleDriver");
-                con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "0900");
+                con = Money.DBCon.getCon();
                 
                 String sql = "SELECT TO_CHAR(pdate,'Mon-YYYY') AS month_year, category, SUM(amount) AS total_amount " +
                              "FROM selavu_expenses WHERE uname=? " +

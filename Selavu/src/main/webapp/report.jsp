@@ -563,8 +563,7 @@ tbody tr:hover {
             String errorMessage = null;
 
             try {
-                Class.forName("oracle.jdbc.driver.OracleDriver");
-                con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","0900");
+                con = Money.DBCon.getCon();
                 String sql = "SELECT pdate, iname, qty, category, amount FROM selavu_expenses WHERE uname=? ORDER BY pdate DESC";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, username);

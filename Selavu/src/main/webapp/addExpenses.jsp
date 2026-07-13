@@ -444,8 +444,7 @@
         Connection con = null;
         PreparedStatement ps = null;
         try {
-           Class.forName("oracle.jdbc.driver.OracleDriver");
-           con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "0900");
+           con = Money.DBCon.getCon();
            ps = con.prepareStatement("INSERT INTO selavu_expenses (uname, amount, iname, qty, category, pdate) VALUES (?, ?, ?, ?, ?, ?)");
            ps.setString(1, uname);
            ps.setDouble(2, Double.parseDouble(amount));
